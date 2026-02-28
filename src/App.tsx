@@ -8,7 +8,9 @@ function App() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+     if (username === "" || password === "") {
+      return;
+    }
     if (username === "user" && password === "password") {
       setMessage("Welcome, user!");
     } else {
