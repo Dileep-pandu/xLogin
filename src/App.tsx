@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 
 function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (username === "user" && password === "password") {
