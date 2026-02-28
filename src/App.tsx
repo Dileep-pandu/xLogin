@@ -1,16 +1,18 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 
-function App() {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-     if (username === "" || password === "") {
+
+    if (!username || !password) {
       return;
     }
+
     if (username === "user" && password === "password") {
       setMessage("Welcome, user!");
     } else {
@@ -19,42 +21,36 @@ function App() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
+    <div>
       <form onSubmit={handleSubmit}>
+
         <div>
-          <label htmlFor="username">Username</label>
-          <br />
+          <label>Username</label>
           <input
             type="text"
-            id="username"
-            required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
-
-        <br />
 
         <div>
-          <label htmlFor="password">Password</label>
-          <br />
+          <label>Password</label>
           <input
             type="password"
-            id="password"
-            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 
-        <br />
-
         <button type="submit">Submit</button>
+
       </form>
 
-      <p>{message}</p>
+      {message && <p>{message}</p>}
     </div>
   );
 }
 
-export default App;
+export default LoginPage;
